@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Happy Birthday, [Person's Name]!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="hpy.css">
+</head>
+<body>
+  <canvas id="bg-canvas"></canvas>
+  <main>
+    <h1 class="title">Happy Birthday, <span id="person-name">[Person's Name]</span>!</h1>
+    <p class="subtitle">The Great Adventure</p>
+    <section id="adventure-messages">
+      <div class="message message-active" data-step="0">
+        <span class="level-icon">🌄</span>
+        <h2>Checkpoint 1</h2>
+        <p>A new adventure begins...</p>
+      </div>
+      <div class="message" data-step="1">
+        <span class="level-icon">🚴‍♂️</span>
+        <h2>Checkpoint 2</h2>
+        <p>Remember all the fun times exploring new places and sharing laughs?</p>
+      </div>
+      <div class="message" data-step="2">
+        <span class="level-icon">🎒</span>
+        <h2>Checkpoint 3</h2>
+        <p>Your curiosity and passion have led you on so many journeys—on foot, in books, and in your dreams.</p>
+      </div>
+      <div class="message" data-step="3">
+        <span class="level-icon">🏆</span>
+        <h2>Final Level: Celebration!</h2>
+        <p>
+          Happy Birthday!<br>
+          Wishing you a day filled with joy, adventure, and laughter.<br>
+          Here's to all your amazing achievements, unforgettable memories, and the wonderful person you are.<br>
+          May your next year be your greatest quest yet!
+        </p>
+      </div>
+      <button id="next-btn" aria-label="Next checkpoint">➔</button>
+    </section>
+    <section id="secret-map-section">
+      <h2 class="map-title">Find the Secret Destination!</h2>
+      <div id="virtual-map"></div>
+      <div id="destination-popup" class="hidden">
+        <button id="close-popup" aria-label="Close">×</button>
+        <div id="popup-content"></div>
+      </div>
+    </section>
+  </main>
+  <!-- Audio: Every Breath You Take (The Police) -->
+  <audio id="ending-audio" src="https://dl.dropboxusercontent.com/s/09w6p1i1w4w0r6p/Every%20Breath%20You%20Take%20-%20The%20Police.mp3" preload="auto"></audio>
+  
+  <!-- Giant Animated Flower Popup -->
+  <div id="giant-flower-popup" class="hidden">
+    <div class="giant-flower-content">
+      <svg id="giant-flower-svg" width="400" height="400" viewBox="0 0 320 320">
+        <defs>
+          <radialGradient id="petal-grad" cx="50%" cy="50%" r="80%">
+            <stop offset="0%" stop-color="#fff6f6" stop-opacity="1"/>
+            <stop offset="70%" stop-color="#ffb0e7" stop-opacity="0.85"/>
+            <stop offset="100%" stop-color="#fa4bc0" stop-opacity="0.8"/>
+          </radialGradient>
+          <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="18" result="coloredBlur"/>
+            <feMerge>
+              <feMergeNode in="coloredBlur"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+        </defs>
+        <!-- 8 Petals -->
+        <g filter="url(#glow)">
+          <g id="petals">
+            <ellipse cx="160" cy="80" rx="50" ry="110" fill="url(#petal-grad)" transform="rotate(0 160 160)"/>
+            <ellipse cx="160" cy="80" rx="50" ry="110" fill="url(#petal-grad)" transform="rotate(45 160 160)"/>
+            <ellipse cx="160" cy="80" rx="50" ry="110" fill="url(#petal-grad)" transform="rotate(90 160 160)"/>
+            <ellipse cx="160" cy="80" rx="50" ry="110" fill="url(#petal-grad)" transform="rotate(135 160 160)"/>
+            <ellipse cx="160" cy="80" rx="50" ry="110" fill="url(#petal-grad)" transform="rotate(180 160 160)"/>
+            <ellipse cx="160" cy="80" rx="50" ry="110" fill="url(#petal-grad)" transform="rotate(225 160 160)"/>
+            <ellipse cx="160" cy="80" rx="50" ry="110" fill="url(#petal-grad)" transform="rotate(270 160 160)"/>
+            <ellipse cx="160" cy="80" rx="50" ry="110" fill="url(#petal-grad)" transform="rotate(315 160 160)"/>
+          </g>
+          <!-- Center -->
+          <circle cx="160" cy="160" r="54" fill="#fffaa6" stroke="#ffd700" stroke-width="10" filter="url(#glow)"/>
+          <circle cx="160" cy="160" r="34" fill="#ffec80" stroke="#ffe066" stroke-width="7"/>
+        </g>
+      </svg>
+      <div class="giant-flower-message">
+        You're Great!<br>
+        Life is an adventure, and you make it beautiful 🌱
+      </div>
+      <button id="giant-flower-ok">OK</button>
+      <div class="giant-flower-note">
+        <em>If music doesn't play, please click OK or tap anywhere!</em>
+      </div>
+      <div class="giant-flower-credit">
+        <a href="https://youtu.be/OMOGaugKpzs?si=Bx8WbWgstA9WbhPV" target="_blank" rel="noopener">🎵 The Police – Every Breath You Take (official)</a>
+      </div>
+    </div>
+  </div>
+  <script src="hpy.js"></script>
+</body>
+</html>
